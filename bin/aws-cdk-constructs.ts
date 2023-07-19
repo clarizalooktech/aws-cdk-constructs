@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import 'source-map-support/register';
-import * as cdk from 'aws-cdk-lib';
-import { CdkAppStack } from '../lib/cdk-app-stack';
+import 'source-map-support/register'
+import * as cdk from 'aws-cdk-lib'
+import { SqsStack } from '../lib/sqs-stack'
 
-const app = new cdk.App();
-new CdkAppStack(app, 'CdkAppStack', {
+const app = new cdk.App()
+
+new SqsStack(app, 'SqsStack', {
   env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION,
+    account: '8',
+    region: 'ap-southeast-2',
   },
-});
+})
