@@ -2,7 +2,8 @@ name: Deploy SQS
 
 on:
   push:
-    branches: [ feature/sqs-construct ]
+    branches: 
+      - feature/sqs-construct
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
