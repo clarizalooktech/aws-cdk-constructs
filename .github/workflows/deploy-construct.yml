@@ -9,11 +9,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy-sqs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Use Node
         uses: actions/setup-node@v2
 
@@ -22,11 +21,11 @@ jobs:
 
       - name: Install Node.js
         run: |
-          sudo npm install -g npm@latest
-          sudo npm install package.json
+          npm install -g npm@latest
+          npm install package.json
 
       - name: Configure AWS credentials from Production account
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
